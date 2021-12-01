@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/dojos/:id', to: 'dojos#show'
 
   get '/instructors', to: 'instructors#index'
+  get '/instructors/:id', to: 'instructors#show'
 
   get '/seeds', to: 'seeds#index'
+  get '/seeds/:id', to: 'seeds#show'
 end
