@@ -5,4 +5,8 @@ Rails.application.routes.draw do
 
   get '/dojos', to: 'dojos#index'
   get '/dojos/:id', to: 'dojos#show'
+
+  get '/instructors', to: 'instructors#index'
+
+  get '/seeds', to: 'seeds#index'
 end
