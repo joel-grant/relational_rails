@@ -12,8 +12,16 @@ RSpec.describe 'dojo show page' do
       expect(page).to have_content(dojo.rating)
 
       expect(page).to_not have_content(dojo_2.name)
-      expect(page).to_not have_content(dojo_2.open)
-      expect(page).to_not have_content(dojo_2.rating)
+    end
+
+    it 'displays the quantity of instructors in the Dojo' do
+      dojo = Dojo.create!(name: "Blue Fist", open: true, rating: 2)
+      instructor = dojo.instructors.create!(name: "Jessica", payroll: true, experience: 3)
+      instructor_2 = dojo.instructors.create!(name: "Jimmy", payroll: false, experience: 55)
+
+      visit "/dojos/#{dojo.id}"
+
+      expect(page).to have_content(dojo.instructors.count)
     end
   end
 end
