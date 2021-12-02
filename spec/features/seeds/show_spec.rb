@@ -1,11 +1,13 @@
-require 'rails_helper' 
+require 'rails_helper'
 
-RSpec.describe 'seed show page' do 
-  describe 'when i visit /seeds/:id' do 
-    it 'displays the seed and attributes' do 
-      seed = Seed.create!(name: "Jessica", available: true, quantity: 3)
-      seed_2 = Seed.create!(name: "Jimmy", available: false, quantity: 55)
-      
+RSpec.describe 'seed show page' do
+  describe 'when i visit /seeds/:id' do
+    it 'displays the seed and attributes' do
+      company = Company.create!(name: "Johnny's Seeds", accepting_orders: true, years_active: 10)
+      company_2 = Company.create!(name: "Turing Seeds", accepting_orders: false, years_active: 6)
+      seed = company.seeds.create!(name: "Jessica", available: true, quantity: 3)
+      seed_2 = company_2.seeds.create!(name: "Jimmy", available: false, quantity: 55)
+
       visit "/seeds/#{seed.id}"
 
       expect(page).to have_content(seed.name)
@@ -15,6 +17,6 @@ RSpec.describe 'seed show page' do
       expect(page).to_not have_content(seed_2.name)
       expect(page).to_not have_content(seed_2.available)
       expect(page).to_not have_content(seed_2.quantity)
-    end 
-  end 
-end 
+    end
+  end
+end

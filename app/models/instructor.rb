@@ -1,3 +1,3 @@
-class Instructor < ApplicationRecord 
-  
-end 
+class Instructor < ApplicationRecord
+  belongs_to :dojo
+end
