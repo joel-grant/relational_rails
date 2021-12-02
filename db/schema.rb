@@ -10,20 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_01_214358) do
+ActiveRecord::Schema.define(version: 2021_12_01_232952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "animals", force: :cascade do |t|
-    t.string "name"
-    t.boolean "has_covid"
-    t.integer "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "zoo_id"
-    t.index ["zoo_id"], name: "index_animals_on_zoo_id"
-  end
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -41,30 +31,14 @@ ActiveRecord::Schema.define(version: 2021_12_01_214358) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "guests", force: :cascade do |t|
-    t.string "name"
-    t.boolean "royalty_member"
-    t.integer "room_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "hotel_id"
-    t.index ["hotel_id"], name: "index_guests_on_hotel_id"
-  end
-
-  create_table "hotels", force: :cascade do |t|
-    t.string "name"
-    t.boolean "vacancy"
-    t.integer "occupancy"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "instructors", force: :cascade do |t|
     t.string "name"
     t.boolean "payroll"
     t.integer "experience"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "dojo_id"
+    t.index ["dojo_id"], name: "index_instructors_on_dojo_id"
   end
 
   create_table "seeds", force: :cascade do |t|
@@ -73,16 +47,10 @@ ActiveRecord::Schema.define(version: 2021_12_01_214358) do
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_seeds_on_company_id"
   end
 
-  create_table "zoos", force: :cascade do |t|
-    t.string "name"
-    t.boolean "open"
-    t.integer "num_of_people"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_foreign_key "animals", "zoos"
-  add_foreign_key "guests", "hotels"
+  add_foreign_key "instructors", "dojos"
+  add_foreign_key "seeds", "companies"
 end

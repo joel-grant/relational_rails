@@ -11,4 +11,8 @@ Rails.application.routes.draw do
 
   get '/seeds', to: 'seeds#index'
   get '/seeds/:id', to: 'seeds#show'
+
+  get '/dojos/:id/instructors', to: 'dojo_instructors#index'
+
+  get '/companies/:id/seeds', to: 'company_seeds#index'
 end
