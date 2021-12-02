@@ -9,13 +9,11 @@ RSpec.describe 'dojos instructor index' do
     instructor_2 = dojo_2.instructors.create!(name: "Jimmy", payroll: false, experience: 55)
 
     visit "/dojos/#{dojo.id}/instructors"
-    save_and_open_page
+
     expect(page).to have_content(instructor.name)
     expect(page).to have_content(instructor.payroll)
     expect(page).to have_content(instructor.experience)
 
     expect(page).to_not have_content(instructor_2.name)
-    expect(page).to_not have_content(instructor_2.payroll)
-    expect(page).to_not have_content(instructor_2.experience)
   end
 end
