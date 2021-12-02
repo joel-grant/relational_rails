@@ -1,6 +1,6 @@
 class DojosController < ApplicationController
   def index
-    @dojos = Dojo.all.order(:created_at)
+    @dojos = Dojo.all
   end
 
   def show
