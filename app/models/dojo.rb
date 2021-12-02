@@ -1,3 +1,3 @@
 class Dojo < ApplicationRecord
-
-end 
+  has_many :instructors
+end
