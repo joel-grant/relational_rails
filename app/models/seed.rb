@@ -1,2 +1,3 @@
 class Seed < ApplicationRecord
-end 
+  belongs_to :company
+end
