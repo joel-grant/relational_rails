@@ -15,8 +15,6 @@ RSpec.describe 'seed show page' do
       expect(page).to have_content(seed.quantity)
 
       expect(page).to_not have_content(seed_2.name)
-      expect(page).to_not have_content(seed_2.available)
-      expect(page).to_not have_content(seed_2.quantity)
     end
   end
 end

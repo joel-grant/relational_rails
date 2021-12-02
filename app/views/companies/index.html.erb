@@ -1,3 +1,4 @@
-<% @companies.each do |company| %>
+<% @companies.recently_created.each do |company| %>
   <p><%= company.name %></p>
+  <p><%= company.created_at %></p>
 <% end %>
