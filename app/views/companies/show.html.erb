@@ -1,5 +1,6 @@
+<%= link_to "Seeds Index", "/seeds" %>
 <h1><%= @company.name %></h1>
-<h3><%= @company.id %></h3>
-<h3><%= @company.accepting_orders %></h3>
-<h3><%= @company.years_active %></h3>
-<h3><%= @company.seeds.count %></h3>
+<h3>Company ID: <%= @company.id %></h3>
+<h3>Accepting Orders? <%= @company.accepting_orders %></h3>
+<h3>Years Active: <%= @company.years_active %></h3>
+<h3>Seed Count: <%= @company.seeds.count %></h3>
