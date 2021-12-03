@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'company show page' do
-  before :each do 
+  before :each do
     @company = Company.create!(name: "Johnny's Seeds", accepting_orders: true, years_active: 10)
     @company_2 = Company.create!(name: "Turing Seeds", accepting_orders: false, years_active: 12)
 
     visit "/companies/#{@company.id}"
-  end 
+  end
   describe 'when I visit /companies/:id' do
     it 'displays the company with id and its attributes' do
       expect(page).to have_content(@company.name)
@@ -20,10 +20,22 @@ RSpec.describe 'company show page' do
       expect(page).to have_content(@company.seeds.count)
     end
 
-    it 'has a link that goes to the seeds index' do 
+    it 'has a link that goes to the seeds index' do
       click_link "Seeds Index"
 
       expect(current_path).to eq("/seeds")
+    end
+
+    it 'has a link that goes to the companies index' do
+      click_link "Companies Index"
+
+      expect(current_path).to eq("/companies")
+    end
+
+    it 'has a link that goes to the company seeds index' do
+      click_link "Company Seeds Index"
+
+      expect(current_path).to eq("/companies/#{@company.id}/seeds")
     end
   end
 end

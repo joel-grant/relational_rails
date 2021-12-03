@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe 'dojo show page' do
-  before :each do 
+  before :each do
     @dojo = Dojo.create!(name: "Blue Fist", open: true, rating: 2)
     @dojo_2 = Dojo.create!(name: "Purple Fist", open: true, rating: 2)
     @instructor = @dojo.instructors.create!(name: "Jessica", payroll: true, experience: 3)
     @instructor_2 = @dojo.instructors.create!(name: "Jimmy", payroll: false, experience: 55)
 
     visit "/dojos/#{@dojo.id}"
-  end 
+  end
 
   describe 'when I visit /dojos/:id' do
     it 'displays the dojo with id and its attributes' do
@@ -23,10 +23,22 @@ RSpec.describe 'dojo show page' do
       expect(page).to have_content(@dojo.instructors.count)
     end
 
-    it 'has a link that goes to the seeds index' do 
+    it 'has a link that goes to the instructors index' do
       click_link "Instructors Index"
 
       expect(current_path).to eq("/instructors")
-    end     
+    end
+
+    it 'has a link that goes to the dojos index' do
+      click_link "Dojos Index"
+
+      expect(current_path).to eq("/dojos")
+    end
+
+    it 'has a link that goes to the dojo instructors index' do
+      click_link "Dojo Instructors Index"
+
+      expect(current_path).to eq("/dojos/#{@dojo.id}/instructors")
+    end
   end
 end

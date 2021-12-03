@@ -1,4 +1,6 @@
+<%= link_to "Companies Index", "/companies" %>
 <%= link_to "Seeds Index", "/seeds" %>
+<%= link_to "Company Seeds Index", "/companies/#{@company.id}/seeds" %>
 <h1><%= @company.name %></h1>
 <h3>Company ID: <%= @company.id %></h3>
 <h3>Accepting Orders? <%= @company.accepting_orders %></h3>
