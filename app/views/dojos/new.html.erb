@@ -1,0 +1,9 @@
+<%= form_with url: '/dojos', method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :open %>
+  <%= form.text_field :open %>
+  <%= form.label :rating %>
+  <%= form.text_field :rating %>
+  <%= form.submit "Create Dojo" %>
+<% end  %>
