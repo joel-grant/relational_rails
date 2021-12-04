@@ -8,12 +8,22 @@ class CompaniesController < ApplicationController
   end
 
   def new
-    
+
   end
 
   def create
     company = Company.create!(company_params)
     redirect_to '/companies'
+  end
+
+  def edit
+    @company = Company.find(params[:id])
+  end
+
+  def update
+    company = Company.find(params[:id])
+    company.update(company_params)
+    redirect_to "/companies/#{company.id}"
   end
 
   private
