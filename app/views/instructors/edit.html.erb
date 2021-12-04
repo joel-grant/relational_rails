@@ -1,0 +1,9 @@
+<%= form_with url: "/instructors/#{@instructor.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :payroll %>
+  <%= form.text_field :payroll %>
+  <%= form.label :experience %>
+  <%= form.text_field :experience %>
+  <%= form.submit "Update #{@instructor.name}" %>
+<% end %>

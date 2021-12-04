@@ -20,9 +20,13 @@ Rails.application.routes.draw do
 
   get '/instructors', to: 'instructors#index'
   get '/instructors/:id', to: 'instructors#show'
+  get '/instructors/:id/edit', to: 'instructors#edit'
+  patch '/instructors/:id', to: 'instructors#update'
   
   get '/seeds', to: 'seeds#index'
   get '/seeds/:id', to: 'seeds#show'
+  get '/seeds/:id/edit', to: 'seeds#edit'
+  patch '/seeds/:id', to: 'seeds#update'
   
   get '/dojos/:id/instructors', to: 'dojo_instructors#index'
   

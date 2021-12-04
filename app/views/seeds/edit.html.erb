@@ -1,0 +1,9 @@
+<%= form_with url: "/seeds/#{@seed.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :available %>
+  <%= form.text_field :available %>
+  <%= form.label :quantity %>
+  <%= form.text_field :quantity %>
+  <%= form.submit "Update #{@seed.name}" %>
+<% end %>
