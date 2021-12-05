@@ -1,5 +1,5 @@
 <%= link_to "Companies Index", "/companies" %>
-<% @seeds.each do |seed| %>
+<% @seeds.return_true.each do |seed| %>
   <h1><%= seed.name %></h1>
   <p><%= seed.available %></p>
   <p><%= seed.quantity %></p>
