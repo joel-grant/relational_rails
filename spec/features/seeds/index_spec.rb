@@ -4,6 +4,9 @@ RSpec.describe 'Seeds Index Page' do
   before :each do
     @company = Company.create!(name: "Johnny's Seeds", accepting_orders: true, years_active: 10)
     @seed = @company.seeds.create!(name: "Tomato", available: true, quantity: 50)
+    @seed_2 = @company.seeds.create!(name: "Jalapeno", available: true, quantity: 50)
+    @seed_3 = @company.seeds.create!(name: "Onion", available: false, quantity: 50)
+
 
     visit "/seeds"
   end
@@ -19,6 +22,12 @@ RSpec.describe 'Seeds Index Page' do
       click_link "Companies Index"
 
       expect(current_path).to eq("/companies")
+    end
+
+    it 'shows only the instructors on payroll' do
+      expect(page).to have_content(@seed.name)
+      expect(page).to have_content(@seed_2.name)
+      expect(page).to_not have_content(@seed_3.name)
     end
   end
 end
