@@ -1,5 +1,5 @@
 <%= link_to "Dojos Index", "/dojos" %>
-<% @instructors.each do |instructor| %>
+<% @instructors.return_true.each do |instructor| %>
   <h1><%= instructor.name %></h1>
   <p><%= instructor.payroll %></p>
   <p><%= instructor.experience %></p>
