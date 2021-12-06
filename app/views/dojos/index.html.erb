@@ -2,5 +2,6 @@
 <% @dojos.recently_created.each do |dojo| %>
   <p><%= dojo.name %></p>
   <p><%= dojo.created_at %></p>
+  <%= link_to "Edit #{dojo.name}", "/dojos/#{dojo.id}/edit" %>
 <% end %>
 <%= link_to "New Dojo", "/dojos/new" %>
