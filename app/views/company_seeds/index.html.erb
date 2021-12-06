@@ -1,5 +1,6 @@
 <%= link_to "Companies Index", "/companies" %>
 <%= link_to "Seeds Index", "/seeds" %>
+<%= link_to "Alphabetize  Seeds", "/companies/#{@company.id}/seeds?order=alphabetize" %>
 <% @seeds.each do |seed| %>
   <h1><%= seed.name %></h1>
   <h3><%= seed.id %></h3>

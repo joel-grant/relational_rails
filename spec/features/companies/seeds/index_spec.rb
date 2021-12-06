@@ -5,8 +5,11 @@ RSpec.describe 'companies seed index' do
     @company = Company.create!(name: "Johnny's Seeds", accepting_orders: true, years_active: 10)
     @company_2 = Company.create!(name: "Turing Seeds", accepting_orders: false, years_active: 6)
 
-    @seed = @company.seeds.create!(name: "Jessica", available: true, quantity: 3)
+    @seed = @company.seeds.create!(name: "Tomato", available: true, quantity: 3)
     @seed_2 = @company_2.seeds.create!(name: "Jimmy", available: false, quantity: 55)
+    @seed_3 = @company.seeds.create!(name: "Jalapeno", available: true, quantity: 3)
+    @seed_4 = @company.seeds.create!(name: "Onion", available: true, quantity: 3)
+
 
     visit "/companies/#{@company.id}/seeds"
   end
@@ -30,5 +33,18 @@ RSpec.describe 'companies seed index' do
     click_link "Companies Index"
 
     expect(current_path).to eq("/companies")
+  end
+
+  it 'has a link to alphabetize the seeds' do
+    click_link "Alphabetize Seeds"
+
+    expect(current_path).to eq("/companies/#{@company.id}/seeds")
+  end
+
+  it 'can be alphabetized by name' do
+    click_link "Alphabetize Seeds"
+
+    expect(@seed_3.name).to appear_before(@seed_4.name)
+    expect(@seed_4.name).to appear_before(@seed.name)
   end
 end

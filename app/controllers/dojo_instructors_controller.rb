@@ -1,7 +1,11 @@
 class DojoInstructorsController < ApplicationController
   def index
     @dojo = Dojo.find(params[:id])
-    @instructors = @dojo.instructors
+    if params[:order]
+      @instructors = @dojo.instructors.alphabetize(params[:id])
+    else
+      @instructors = @dojo.instructors
+    end
   end
 
   def new
@@ -15,7 +19,7 @@ class DojoInstructorsController < ApplicationController
     redirect_to "/dojos/#{@dojo.id}/instructors"
   end
 
-  private 
+  private
   def instructor_params
     params.permit(:name, :payroll, :experience)
   end

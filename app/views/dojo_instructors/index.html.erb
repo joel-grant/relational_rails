@@ -1,5 +1,6 @@
 <%= link_to "Dojos Index", "/dojos" %>
 <%= link_to "Instructors Index", "/instructors" %>
+<%= link_to "Alphabetize Instructors", "/dojos/#{@dojo.id}/instructors?order=alphabetize" %>
 <% @instructors.each do |instructor| %>
   <h1><%= instructor.name %></h1>
   <h3><%= instructor.id %></h3>

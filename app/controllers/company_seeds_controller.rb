@@ -1,7 +1,11 @@
 class CompanySeedsController < ApplicationController
   def index
     @company = Company.find(params[:id])
-    @seeds = @company.seeds
+    if params[:order]
+      @seeds = @company.seeds.alphabetize(params[:id])
+    else
+      @seeds = @company.seeds
+    end
   end
 
   def new
@@ -20,4 +24,3 @@ class CompanySeedsController < ApplicationController
     params.permit(:name, :available, :quantity)
   end
 end
-

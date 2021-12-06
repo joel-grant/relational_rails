@@ -7,6 +7,9 @@ RSpec.describe 'dojos instructor index' do
 
     @instructor = @dojo.instructors.create!(name: "Jessica", payroll: true, experience: 3)
     @instructor_2 = @dojo_2.instructors.create!(name: "Jimmy", payroll: false, experience: 55)
+    @instructor_3 = @dojo.instructors.create!(name: "Flava Flav", payroll: false, experience: 55)
+    @instructor_4 = @dojo.instructors.create!(name: "Tila Tequila", payroll: true, experience: 60)
+
 
     visit "/dojos/#{@dojo.id}/instructors"
   end
@@ -28,5 +31,18 @@ RSpec.describe 'dojos instructor index' do
     click_link "Dojos Index"
 
     expect(current_path).to eq("/dojos")
+  end
+
+  it 'has a link to alphabetize the instructors' do
+    click_link "Alphabetize Instructors"
+
+    expect(current_path).to eq("/dojos/#{@dojo.id}/instructors")
+  end
+
+  it 'can be alphabetized by name' do
+    click_link "Alphabetize Instructors"
+
+    expect(@instructor_3.name).to appear_before(@instructor.name)
+    expect(@instructor.name).to appear_before(@instructor_4.name)
   end
 end
