@@ -1,25 +1,25 @@
-class InstructorsController < ApplicationController 
+class InstructorsController < ApplicationController
   def index
-    @instructors = Instructor.all 
+    @instructors = Instructor.all
   end
 
   def show
     @instructor = Instructor.find(params[:id])
   end
 
-  def edit 
+  def edit
     @instructor = Instructor.find(params[:id])
   end
 
   def update
     instructor = Instructor.find(params[:id])
-    instructor.update(instructor_params) 
+    instructor.update(instructor_params)
 
     redirect_to "/instructors/#{instructor.id}"
   end
 
   private
   def instructor_params
-    params.permit(:name, :payroll, :experience)    
+    params.permit(:name, :payroll, :experience)
   end
-end 
+end
