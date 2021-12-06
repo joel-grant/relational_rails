@@ -4,4 +4,8 @@ class Seed < ApplicationRecord
   def self.return_true
     where(available: true)
   end
+
+  def self.alphabetize(company_id)
+    where(company_id: company_id).order(:name)
+  end
 end
