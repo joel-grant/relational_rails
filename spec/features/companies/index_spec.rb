@@ -23,6 +23,25 @@ RSpec.describe 'company index page' do
 
       expect(current_path).to eq("/seeds")
     end 
+
+    it 'has a link by each company to update' do 
+      click_link "Edit #{@company.name}"
+      
+      expect(current_path).to eq("/companies/#{@company.id}/edit")
+    end 
+
+    it 'takes user to form to update company info' do
+      visit "/companies/#{@company.id}/edit"
+
+      fill_in(:name, with: "SeedMan")
+      fill_in(:accepting_orders, with: true)
+      fill_in(:years_active, with: 32)
+
+      click_button "Update Company"
+
+      expect(current_path).to eq("/companies/#{@company.id}")
+      expect(page).to have_content("SeedMan")
+    end 
   end
 end
 

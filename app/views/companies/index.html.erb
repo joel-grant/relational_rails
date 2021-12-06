@@ -2,5 +2,6 @@
 <% @companies.recently_created.each do |company| %>
   <p><%= company.name %></p>
   <p><%= company.created_at %></p>
+  <%= link_to "Edit #{company.name}", "/companies/#{company.id}/edit" %>
 <% end %>
 <%= link_to "New Company", "/companies/new" %>
