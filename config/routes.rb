@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   patch '/instructors/:id', to: 'instructors#update'
   delete '/instructors/:id', to: 'instructors#destroy'
 
-
   get '/seeds', to: 'seeds#index'
   get '/seeds/:id', to: 'seeds#show'
   get '/seeds/:id/edit', to: 'seeds#edit'

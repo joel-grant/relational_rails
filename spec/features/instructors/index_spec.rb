@@ -46,5 +46,13 @@ RSpec.describe 'Instructor Index Page' do
       expect(current_path).to eq("/instructors/#{@instructor.id}")
       expect(page).to have_content("SeedMan")
     end 
+
+    it 'has a link to delete any child' do 
+      expect(page).to have_content(@instructor.name)
+      click_link "Delete #{@instructor.name}"
+
+      expect(current_path).to eq("/instructors")
+      expect(page).to_not have_content(@instructor.name)
+    end 
   end
 end

@@ -79,4 +79,12 @@ RSpec.describe 'dojos instructor index' do
     expect(page).to_not have_content(@instructor.name)
     expect(page).to_not have_content(@instructor_3.name)
   end
+
+  it 'has a link to delete any parent/child' do 
+    expect(page).to have_content(@instructor.name)
+    click_link "Delete #{@instructor.name}"
+
+    expect(current_path).to eq("/instructors")
+    expect(page).to_not have_content(@instructor.name)
+  end 
 end
