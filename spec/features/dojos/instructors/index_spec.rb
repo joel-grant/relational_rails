@@ -45,4 +45,24 @@ RSpec.describe 'dojos instructor index' do
     expect(@instructor_3.name).to appear_before(@instructor.name)
     expect(@instructor.name).to appear_before(@instructor_4.name)
   end
+
+  it 'has a link in index page to edit' do 
+    click_link "Update #{@instructor.name}"
+
+    expect(current_path).to eq("/instructors/#{@instructor.id}/edit")
+  end 
+
+  it 'has a form to fill out instructor info' do 
+    visit "/instructors/#{@instructor.id}/edit"
+
+    fill_in(:name, with: "SeedMan")
+    fill_in(:payroll, with: true)
+    fill_in(:experience, with: 32)
+
+    click_button "Update #{@instructor.name}"
+
+    expect(current_path).to eq("/instructors/#{@instructor.id}")
+    expect(page).to have_content("SeedMan")
+
+  end 
 end
