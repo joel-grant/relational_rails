@@ -8,4 +8,8 @@ class Instructor < ApplicationRecord
   def self.alphabetize(dojo_id)
     where(dojo_id: dojo_id).order(:name)
   end
+
+  def self.filter_threshold(threshold)
+    where('experience > ?', threshold)
+  end
 end

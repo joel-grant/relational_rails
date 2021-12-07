@@ -18,4 +18,10 @@ RSpec.describe Instructor do
     instructors = [@instructor_2, @instructor, @instructor_3]
     expect(Instructor.alphabetize(@dojo.id)).to eq(instructors)
   end
+
+  it 'returns only the records above the users threshold' do
+    instructors = [@instructor_2, @instructor_3]
+    expect(Instructor.filter_threshold(3)).to eq(instructors)
+  end
+
 end

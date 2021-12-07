@@ -3,9 +3,12 @@ class CompanySeedsController < ApplicationController
     @company = Company.find(params[:id])
     if params[:order]
       @seeds = @company.seeds.alphabetize(params[:id])
+    elsif params[:quantity]
+      @seeds = @company.seeds.filter_threshold(params[:quantity])
     else
       @seeds = @company.seeds
     end
+
   end
 
   def new

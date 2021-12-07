@@ -5,10 +5,10 @@ RSpec.describe 'companies seed index' do
     @company = Company.create!(name: "Johnny's Seeds", accepting_orders: true, years_active: 10)
     @company_2 = Company.create!(name: "Turing Seeds", accepting_orders: false, years_active: 6)
 
-    @seed = @company.seeds.create!(name: "Tomato", available: true, quantity: 3)
-    @seed_2 = @company_2.seeds.create!(name: "Jimmy", available: false, quantity: 55)
-    @seed_3 = @company.seeds.create!(name: "Jalapeno", available: true, quantity: 3)
-    @seed_4 = @company.seeds.create!(name: "Onion", available: true, quantity: 3)
+    @seed = @company.seeds.create!(name: "Tomato", available: true, quantity: 25)
+    @seed_2 = @company_2.seeds.create!(name: "Jimmy", available: false, quantity: 150)
+    @seed_3 = @company.seeds.create!(name: "Jalapeno", available: true, quantity: 50)
+    @seed_4 = @company.seeds.create!(name: "Onion", available: true, quantity: 200)
 
 
     visit "/companies/#{@company.id}/seeds"
@@ -46,5 +46,19 @@ RSpec.describe 'companies seed index' do
 
     expect(@seed_3.name).to appear_before(@seed_4.name)
     expect(@seed_4.name).to appear_before(@seed.name)
+  end
+
+  it 'has a form to input a number value' do
+    expect(page).to have_content(@seed.name)
+    expect(page).to have_content(@seed_3.name)
+    expect(page).to have_content(@seed_4.name)
+
+    fill_in(:quantity, with: 25)
+    click_button("Return Records")
+
+    expect(current_path).to eq("/companies/#{@company.id}/seeds")
+    expect(page).to have_content(@seed_3.name)
+    expect(page).to have_content(@seed_4.name)
+    expect(page).to_not have_content(@seed.name)
   end
 end

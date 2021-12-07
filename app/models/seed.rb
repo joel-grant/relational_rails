@@ -8,4 +8,8 @@ class Seed < ApplicationRecord
   def self.alphabetize(company_id)
     where(company_id: company_id).order(:name)
   end
+
+  def self.filter_threshold(threshold)
+    where('quantity > ?', threshold)
+  end
 end
