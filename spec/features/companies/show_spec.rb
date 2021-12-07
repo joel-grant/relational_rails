@@ -37,6 +37,14 @@ RSpec.describe 'company show page' do
 
       expect(current_path).to eq("/companies/#{@company.id}/seeds")
     end
+
+    it 'has a link to delete the Company' do
+      click_link "Delete #{@company.name}"
+
+      expect(current_path).to eq("/companies")
+      expect(page).to_not have_content(@company.name)
+      expect(page).to_not have_button("Delete")
+    end
   end
 end
 
