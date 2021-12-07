@@ -1,12 +1,17 @@
 <%= link_to "Dojos Index", "/dojos" %>
 <%= link_to "Instructors Index", "/instructors" %>
 <%= link_to "Alphabetize Instructors", "/dojos/#{@dojo.id}/instructors?order=alphabetize" %>
+<%= form_with url: "/dojos/#{@dojo.id}/instructors", method: :get, local: true do |form| %>
+  <%= form.label :experience %>
+  <%= form.text_field :experience %>
+  <%= form.submit "Return Records" %>
+<% end %>
+
 <% @instructors.each do |instructor| %>
   <h1><%= instructor.name %></h1>
   <h3><%= instructor.id %></h3>
   <h3><%= instructor.payroll %></h3>
   <h3><%= instructor.experience %></h3>
   <%= link_to "Update #{instructor.name}", "/instructors/#{instructor.id}/edit" %>
-
 <% end %>
 <%= link_to "Create Instructor", "/dojos/#{@dojo.id}/instructors/new" %>

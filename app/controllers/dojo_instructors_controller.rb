@@ -3,9 +3,12 @@ class DojoInstructorsController < ApplicationController
     @dojo = Dojo.find(params[:id])
     if params[:order]
       @instructors = @dojo.instructors.alphabetize(params[:id])
+    elsif params[:experience]
+      @instructors = @dojo.instructors.filter_threshold(params[:experience])
     else
       @instructors = @dojo.instructors
     end
+
   end
 
   def new

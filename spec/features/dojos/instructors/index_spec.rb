@@ -7,7 +7,7 @@ RSpec.describe 'dojos instructor index' do
 
     @instructor = @dojo.instructors.create!(name: "Jessica", payroll: true, experience: 3)
     @instructor_2 = @dojo_2.instructors.create!(name: "Jimmy", payroll: false, experience: 55)
-    @instructor_3 = @dojo.instructors.create!(name: "Flava Flav", payroll: false, experience: 55)
+    @instructor_3 = @dojo.instructors.create!(name: "Flava Flav", payroll: false, experience: 8)
     @instructor_4 = @dojo.instructors.create!(name: "Tila Tequila", payroll: true, experience: 60)
 
 
@@ -46,13 +46,13 @@ RSpec.describe 'dojos instructor index' do
     expect(@instructor.name).to appear_before(@instructor_4.name)
   end
 
-  it 'has a link in index page to edit' do 
+  it 'has a link in index page to edit' do
     click_link "Update #{@instructor.name}"
 
     expect(current_path).to eq("/instructors/#{@instructor.id}/edit")
-  end 
+  end
 
-  it 'has a form to fill out instructor info' do 
+  it 'has a form to fill out instructor info' do
     visit "/instructors/#{@instructor.id}/edit"
 
     fill_in(:name, with: "SeedMan")
@@ -64,5 +64,19 @@ RSpec.describe 'dojos instructor index' do
     expect(current_path).to eq("/instructors/#{@instructor.id}")
     expect(page).to have_content("SeedMan")
 
-  end 
+  end
+
+  it 'has a form to input a number value' do
+    expect(page).to have_content(@instructor.name)
+    expect(page).to have_content(@instructor_3.name)
+    expect(page).to have_content(@instructor_4.name)
+
+    fill_in(:experience, with: 10)
+    click_button("Return Records")
+
+    expect(current_path).to eq("/dojos/#{@dojo.id}/instructors")
+    expect(page).to have_content(@instructor_4.name)
+    expect(page).to_not have_content(@instructor.name)
+    expect(page).to_not have_content(@instructor_3.name)
+  end
 end
