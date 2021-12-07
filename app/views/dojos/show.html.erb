@@ -7,3 +7,4 @@
 <h3><%= @dojo.rating %></h3>
 <h3><%= @dojo.instructors.count %></h3>
 <%= link_to "Update #{@dojo.name}", "/dojos/#{@dojo.id}/edit" %>
+<%= link_to "Delete #{@dojo.name}", "/dojos/#{@dojo.id}", method: :delete %>

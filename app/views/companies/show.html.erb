@@ -7,3 +7,4 @@
 <h3>Years Active: <%= @company.years_active %></h3>
 <h3>Seed Count: <%= @company.seeds.count %></h3>
 <%= link_to "Update #{@company.name}", "/companies/#{@company.id}/edit" %>
+<%= link_to "Delete #{@company.name}", "/companies/#{@company.id}", method: :delete %>
