@@ -18,6 +18,12 @@ class InstructorsController < ApplicationController
     redirect_to "/instructors/#{instructor.id}"
   end
 
+  def destroy
+    instructor = Instructor.find(params[:id])
+    instructor.destroy
+    redirect_to "/instructors"
+  end
+
   private
   def instructor_params
     params.permit(:name, :payroll, :experience)

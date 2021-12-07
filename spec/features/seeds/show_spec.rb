@@ -23,5 +23,13 @@ RSpec.describe 'seed show page' do
 
       expect(current_path).to eq("/companies")
     end
+
+    it 'has a link to delete child' do 
+      click_link "Delete #{@seed.name}"
+
+      expect(current_path).to eq("/seeds")
+      expect(page).to_not have_content(@seed.name)
+      expect(page).to_not have_content("Delete")
+    end 
   end
 end
