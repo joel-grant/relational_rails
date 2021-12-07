@@ -3,5 +3,6 @@
   <p><%= company.name %></p>
   <p><%= company.created_at %></p>
   <%= link_to "Edit #{company.name}", "/companies/#{company.id}/edit" %>
+  <%= link_to "Delete #{company.name}", "/companies/#{company.id}", method: :delete %>
 <% end %>
 <%= link_to "New Company", "/companies/new" %>
