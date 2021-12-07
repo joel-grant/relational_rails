@@ -25,6 +25,14 @@ class DojosController < ApplicationController
     redirect_to "/dojos/#{dojo.id}"
   end
 
+  def destroy
+    dojo = Dojo.find(params[:id])
+    dojo.instructors.destroy_all
+    dojo.destroy
+
+    redirect_to "/dojos"
+  end
+
   private
   def dojo_params
     params.permit(:name, :open, :rating)

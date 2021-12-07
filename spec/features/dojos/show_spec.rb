@@ -40,5 +40,13 @@ RSpec.describe 'dojo show page' do
 
       expect(current_path).to eq("/dojos/#{@dojo.id}/instructors")
     end
+
+    it 'has a link to delete the Dojo' do
+      click_link "Delete #{@dojo.name}"
+
+      expect(current_path).to eq("/dojos")
+      expect(page).to_not have_content(@dojo.name)
+      expect(page).to_not have_button("Delete")
+    end
   end
 end
