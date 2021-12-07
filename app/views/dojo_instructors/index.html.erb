@@ -6,5 +6,7 @@
   <h3><%= instructor.id %></h3>
   <h3><%= instructor.payroll %></h3>
   <h3><%= instructor.experience %></h3>
+  <%= link_to "Update #{instructor.name}", "/instructors/#{instructor.id}/edit" %>
+
 <% end %>
 <%= link_to "Create Instructor", "/dojos/#{@dojo.id}/instructors/new" %>
