@@ -19,6 +19,12 @@ class SeedsController < ApplicationController
     redirect_to "/seeds/#{seed.id}"
   end
 
+  def destroy
+    seed = Seed.find(params[:id])
+    seed.destroy
+    redirect_to "/seeds"      
+  end
+
   private
     def seed_params
       params.permit(:name, :available, :quantity)

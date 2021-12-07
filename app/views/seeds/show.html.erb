@@ -4,4 +4,5 @@
 <h3><%= @seed.quantity %></h3>
 <h3><%= @seed.available %></h3>
 <%= link_to "Update #{@seed.name}", "/seeds/#{@seed.id}/edit" %>
+<%= link_to "Delete #{@seed.name}", "/seeds/#{@seed.id}", method: :delete %>
 
