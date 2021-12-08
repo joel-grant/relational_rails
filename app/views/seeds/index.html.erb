@@ -1,4 +1,9 @@
 <%= link_to "Companies Index", "/companies" %>
+<%= form_with url: '/seeds', method: :get, local: true do |form| %>
+  <%= form.label :keyword %>
+  <%= form.text_field :keyword %>
+  <%= form.submit "Search" %>
+<% end %>
 <% @seeds.return_true.each do |seed| %>
   <h1><%= seed.name %></h1>
   <p><%= seed.available %></p>

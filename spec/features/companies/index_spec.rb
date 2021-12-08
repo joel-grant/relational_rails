@@ -69,14 +69,19 @@ RSpec.describe 'company index page' do
       expect(page).to_not have_content(@company_2.name)
       expect(page).to_not have_content(@company_3.name)
     end
+
+    it 'has a text box to filter results by keyword' do
+      expect(page).to have_content(@company.name)
+      expect(page).to have_content(@company_2.name)
+      expect(page).to have_content(@company_3.name)
+
+      fill_in(:keyword, with: "Joh")
+      click_button "Search"
+
+      expect(current_path).to eq("/companies")
+      expect(page).to have_content(@company.name)
+      expect(page).to_not have_content(@company_2.name)
+      expect(page).to_not have_content(@company_3.name)
+    end
   end
 end
-
-
-
-# User Story 1, Parent Index (x2)
-#
-# For each parent table
-# As a visitor
-# When I visit '/parents'
-# Then I see the name of each parent record in the system

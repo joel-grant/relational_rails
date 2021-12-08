@@ -29,5 +29,18 @@ RSpec.describe 'Seeds Index Page' do
       expect(page).to have_content(@seed_2.name)
       expect(page).to_not have_content(@seed_3.name)
     end
+
+    it 'has a text box to filter results by keyword' do
+      expect(page).to have_content(@seed.name)
+      expect(page).to have_content(@seed_2.name)
+
+      fill_in(:keyword, with: "Jala")
+      click_button "Search"
+
+      expect(current_path).to eq("/seeds")
+      expect(page).to have_content(@seed_2.name)
+      expect(page).to_not have_content(@seed.name)
+      expect(page).to_not have_content(@seed_3.name)
+    end
   end
 end
