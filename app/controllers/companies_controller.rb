@@ -1,6 +1,10 @@
 class CompaniesController < ApplicationController
   def index
-    @companies = Company.all
+    if params[:keyword]
+      @companies = Company.partial_match(params[:keyword])
+    else
+      @companies = Company.all
+    end
   end
 
   def show

@@ -1,6 +1,10 @@
 class SeedsController < ApplicationController
   def index
-    @seeds = Seed.all     
+    if params[:keyword]
+      @seeds = Seed.partial_match(params[:keyword])
+    else
+      @seeds = Seed.all
+    end 
   end
 
   def show
@@ -22,11 +26,11 @@ class SeedsController < ApplicationController
   def destroy
     seed = Seed.find(params[:id])
     seed.destroy
-    redirect_to "/seeds"      
+    redirect_to "/seeds"
   end
 
   private
     def seed_params
       params.permit(:name, :available, :quantity)
     end
-end 
+end

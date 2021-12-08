@@ -23,4 +23,8 @@ RSpec.describe Seed do
     seeds = [@seed_2, @seed_3]
     expect(Seed.filter_threshold(25)).to eq(seeds)
   end
+
+  it 'returns records that are a partial match' do
+    expect(Seed.partial_match("Jala")).to eq([@seed_2])
+  end
 end

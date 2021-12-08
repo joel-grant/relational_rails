@@ -12,4 +12,8 @@ class Seed < ApplicationRecord
   def self.filter_threshold(threshold)
     where('quantity > ?', threshold)
   end
+
+  def self.partial_match(keyword)
+    where("Name  LIKE ?", "%#{keyword}%")
+  end
 end
