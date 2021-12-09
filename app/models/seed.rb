@@ -14,6 +14,6 @@ class Seed < ApplicationRecord
   end
 
   def self.partial_match(keyword)
-    where("Name  LIKE ?", "%#{keyword}%")
+    where("Name  ILIKE ?", "%#{keyword}%")
   end
 end

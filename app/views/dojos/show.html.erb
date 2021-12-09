@@ -1,10 +1,10 @@
-<%= link_to "Dojos Index", "/dojos" %>
-<%= link_to "Instructors Index", "/instructors" %>
+<%= link_to "Dojos Index", "/dojos" %> | 
+<%= link_to "Instructors Index", "/instructors" %> | 
 <%= link_to "Dojo Instructors Index", "/dojos/#{@dojo.id}/instructors" %>
 <h1><%= @dojo.name %></h1>
-<h3><%= @dojo.id %></h3>
-<h3><%= @dojo.open %></h3>
-<h3><%= @dojo.rating %></h3>
-<h3><%= @dojo.instructors.count %></h3>
-<%= link_to "Update #{@dojo.name}", "/dojos/#{@dojo.id}/edit" %>
+<h3>Dojo ID: <%= @dojo.id %></h3>
+<h3>Open? <%= @dojo.open %></h3>
+<h3>Rating: <%= @dojo.rating %></h3>
+<h3>Instructors count: <%= @dojo.instructors.count %></h3>
+<%= link_to "Update #{@dojo.name}", "/dojos/#{@dojo.id}/edit" %> | 
 <%= link_to "Delete #{@dojo.name}", "/dojos/#{@dojo.id}", method: :delete %>

@@ -1,10 +1,8 @@
-<%= link_to "Companies Index", "/companies" %>
-<%= link_to "Seeds Index", "/seeds" %>
-<%= link_to "Company Seeds Index", "/companies/#{@company.id}/seeds" %>
+<%= link_to "Companies Index", "/companies" %> | <%= link_to "Seeds Index", "/seeds" %> | <%= link_to "Company Seeds Index", "/companies/#{@company.id}/seeds" %>
 <h1><%= @company.name %></h1>
 <h3>Company ID: <%= @company.id %></h3>
 <h3>Accepting Orders? <%= @company.accepting_orders %></h3>
 <h3>Years Active: <%= @company.years_active %></h3>
 <h3>Seed Count: <%= @company.seeds.count %></h3>
-<%= link_to "Update #{@company.name}", "/companies/#{@company.id}/edit" %>
+<%= link_to "Update #{@company.name}", "/companies/#{@company.id}/edit" %> | 
 <%= link_to "Delete #{@company.name}", "/companies/#{@company.id}", method: :delete %>

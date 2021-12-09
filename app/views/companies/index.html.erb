@@ -1,13 +1,17 @@
 <%= link_to "Seeds Index", "/seeds" %>
+<h1>Companies</h1>
+
 <%= form_with url: '/companies', method: :get, local: true do |form| %>
   <%= form.label :keyword %>
   <%= form.text_field :keyword %>
   <%= form.submit "Search" %>
 <% end %>
+
 <% @companies.recently_created.each do |company| %>
-  <p><%= company.name %></p>
-  <p><%= company.created_at %></p>
-  <%= link_to "Edit #{company.name}", "/companies/#{company.id}/edit" %>
-  <%= link_to "Delete #{company.name}", "/companies/#{company.id}", method: :delete %>
+  <h3>Name: <%= company.name %></h3>
+  <h3>ID: <%= company.id %></h3>
+  <p>Created At: <%= company.created_at %></p>
+  <%= link_to "Edit #{company.name}", "/companies/#{company.id}/edit" %> | <%= link_to "Delete #{company.name}", "/companies/#{company.id}", method: :delete %>
 <% end %>
-<%= link_to "New Company", "/companies/new" %>
+
+<p><%= link_to "New Company", "/companies/new" %></p>

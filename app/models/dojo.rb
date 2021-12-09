@@ -2,6 +2,6 @@ class Dojo < ApplicationRecord
   has_many :instructors
 
   def self.recently_created
-    order(:created_at)
+    order(created_at: :desc)
   end
 end

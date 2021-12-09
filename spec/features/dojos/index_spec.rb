@@ -14,8 +14,8 @@ RSpec.describe 'dojo index page' do
     end
 
     it 'returns the name of each dojo in order of most recently created' do
-      expect(@dojo.name).to appear_before(@dojo_2.name)
-      expect(@dojo_2.name).to appear_before(@dojo_3.name)
+      expect(@dojo_3.name).to appear_before(@dojo_2.name)
+      expect(@dojo_2.name).to appear_before(@dojo.name)
     end
 
     it 'has a link that goes to the instructors index' do 
