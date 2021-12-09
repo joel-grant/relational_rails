@@ -1,7 +1,10 @@
 <%= link_to "Instructors Index", "/instructors" %>
+  <h1>Dojos</h1>
 <% @dojos.recently_created.each do |dojo| %>
-  <p><%= dojo.name %></p>
-  <p><%= dojo.created_at %></p>
+  <h3>Name: <%= dojo.name %></h3>
+  <h3>ID: <%= dojo.id %></h3>
+  <p>Created At: <%= dojo.created_at %></p>
   <%= link_to "Edit #{dojo.name}", "/dojos/#{dojo.id}/edit" %>
 <% end %>
-<%= link_to "New Dojo", "/dojos/new" %>
+
+<p><%= link_to "New Dojo", "/dojos/new" %></p>

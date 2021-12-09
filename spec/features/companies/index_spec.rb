@@ -14,8 +14,8 @@ RSpec.describe 'company index page' do
     end
 
     it 'returns the name of each company in order of most recently created' do
-      expect(@company.name).to appear_before(@company_2.name)
-      expect(@company_2.name).to appear_before(@company_3.name)
+      expect(@company_3.name).to appear_before(@company_2.name)
+      expect(@company_2.name).to appear_before(@company.name)
     end
 
     it 'has a link that goes to the seeds index' do

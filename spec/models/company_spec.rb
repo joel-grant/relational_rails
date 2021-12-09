@@ -10,7 +10,7 @@ RSpec.describe Company do
   it { should have_many :seeds }
 
   it 'returns the name of each company in order of most recently created' do
-    companies = [@company, @company_2, @company_3]
+    companies = [@company_3, @company_2, @company]
     expect(Company.recently_created).to eq(companies)
   end
 

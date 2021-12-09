@@ -1,8 +1,8 @@
 <%= link_to "Companies Index", "/companies" %>
 <h1><%= @seed.name %></h1>
-<h3><%= @seed.id %></h3>
-<h3><%= @seed.quantity %></h3>
-<h3><%= @seed.available %></h3>
-<%= link_to "Update #{@seed.name}", "/seeds/#{@seed.id}/edit" %>
+<h3>Seed ID: <%= @seed.id %></h3>
+<h3>Quantity: <%= @seed.quantity %></h3>
+<h3>Available? <%= @seed.available %></h3>
+<%= link_to "Update #{@seed.name}", "/seeds/#{@seed.id}/edit" %> |
 <%= link_to "Delete #{@seed.name}", "/seeds/#{@seed.id}", method: :delete %>
 

@@ -1,8 +1,8 @@
-<%= link_to "Dojos Index", "/dojos" %>
+<%= link_to "Dojos Index", "/dojos" %> | 
 <%= link_to "Instructors Index", "/instructors" %>
 <h1><%= @instructor.name %></h1>
-<h3><%= @instructor.id %></h3>
-<h3><%= @instructor.experience %></h3>
-<h3><%= @instructor.payroll %></h3>
-<%= link_to "Update #{@instructor.name}", "/instructors/#{@instructor.id}/edit" %>
+<h3>Instructor ID: <%= @instructor.id %></h3>
+<h3>Years of Experience: <%= @instructor.experience %></h3>
+<h3>On Payroll? <%= @instructor.payroll %></h3>
+<%= link_to "Update #{@instructor.name}", "/instructors/#{@instructor.id}/edit" %> |
 <%= link_to "Delete #{@instructor.name}", "/instructors/#{@instructor.id}", method: :delete %>

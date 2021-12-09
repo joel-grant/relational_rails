@@ -1,8 +1,9 @@
 <%= link_to "Dojos Index", "/dojos" %>
 <% @instructors.return_true.each do |instructor| %>
   <h1><%= instructor.name %></h1>
-  <p><%= instructor.payroll %></p>
-  <p><%= instructor.experience %></p>
-  <%= link_to "Update #{instructor.name}", "/instructors/#{instructor.id}/edit" %>
+  <h3>Payroll? <%= instructor.payroll %></h3>
+  <h3>ID: <%= instructor.id %></h3>
+  <h3>Experience (in years): <%= instructor.experience %></h3>
+  <%= link_to "Update #{instructor.name}", "/instructors/#{instructor.id}/edit" %> | 
   <%= link_to "Delete #{instructor.name}", "/instructors/#{instructor.id}", method: :delete %>
 <% end %>

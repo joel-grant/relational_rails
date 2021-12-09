@@ -8,7 +8,7 @@ RSpec.describe Dojo do
     dojo_2 = Dojo.create!(name: "Fist of Truth", open: false, rating: 4)
     dojo_3 = Dojo.create!(name: "Fists of Fury", open: true, rating: 1)
 
-    dojos = [dojo, dojo_2, dojo_3]
+    dojos = [dojo_3, dojo_2, dojo]
     expect(Dojo.recently_created).to eq(dojos)
   end
 end
